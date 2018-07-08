@@ -1,0 +1,10 @@
+INSERT INTO `personaldetails` VALUES (1,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (2,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (3,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (4,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (5,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (6,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (7,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (8,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (9,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
+INSERT INTO `personaldetails` VALUES (10,'A-17-09','dpulze residence','cyberjaya','6300','selangore');
