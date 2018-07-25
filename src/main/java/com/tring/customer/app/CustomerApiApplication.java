@@ -1,38 +1,23 @@
-package com.tring.customer;
-
-import java.util.Properties;
-
-import javax.sql.DataSource;
+package com.tring.customer.app;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableAutoConfiguration
 @SpringBootApplication
 @EnableTransactionManagement
-//@ComponentScan("com.tring.customer")
-@PropertySource(value = { "classpath:/log4j.properties","classpath:/hibernate.properties" })
-//@Configuration
+@PropertySource(value = { "classpath:/log4j.properties"})
 public class CustomerApiApplication extends SpringBootServletInitializer {
 
 	static Logger logger = LogManager.getLogger(CustomerApiApplication.class);
 
-	@Autowired
+	/*@Autowired
 	private Environment environment;
 
 	@Autowired
@@ -76,7 +61,7 @@ public class CustomerApiApplication extends SpringBootServletInitializer {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
 		txManager.setSessionFactory(getSessionFactory().getObject());
 		return txManager;
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		logger.debug("CustomerApiApplication is started intializing...........");
