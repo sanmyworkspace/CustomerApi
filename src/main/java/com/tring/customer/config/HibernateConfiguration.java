@@ -1,4 +1,4 @@
-/*package com.tring.customer.config;
+package com.tring.customer.config;
 
 import java.util.Properties;
 
@@ -15,10 +15,10 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-*//**
+/**
  * @author akula
  * 
- *//*
+ */
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = { "classpath:/hibernate.properties" })
@@ -71,4 +71,3 @@ public class HibernateConfiguration {
 	
 	
 }
-*/
