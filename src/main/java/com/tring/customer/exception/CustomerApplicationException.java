@@ -12,7 +12,7 @@ public class CustomerApplicationException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
 	private String errorMessage;
-	private String errorCode;
+	private int errorCode;
 
 	public CustomerApplicationException() {
 	}
@@ -21,7 +21,7 @@ public class CustomerApplicationException extends RuntimeException {
 		this.errorMessage = errorMessage;
 	}
 	
-	public CustomerApplicationException(String errorMessage, String errorCode) {
+	public CustomerApplicationException(String errorMessage, int errorCode) {
 		this.errorMessage = errorMessage;
 		this.errorCode = errorCode;
 	}
@@ -34,11 +34,11 @@ public class CustomerApplicationException extends RuntimeException {
 		this.errorMessage = errorMessage;
 	}
 
-	public String getErrorCode() {
+	public int getErrorCode() {
 		return errorCode;
 	}
 
-	public void setErrorCode(String errorCode) {
+	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
 

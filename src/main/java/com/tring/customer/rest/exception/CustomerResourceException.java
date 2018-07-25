@@ -7,6 +7,10 @@ package com.tring.customer.rest.exception;
 public class CustomerResourceException extends RuntimeException {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * User friendly exception message which can be send in response
 	 */
 	private String errorMessage;

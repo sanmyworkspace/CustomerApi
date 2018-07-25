@@ -1,5 +1,6 @@
 package com.tring.customer.rest.resource;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -45,7 +46,7 @@ public class CustomerManagementResource {
 			return Response.ok(genericEntityList).build();
 		} catch (CustomerApplicationException ex) {
 			logger.error(ex);
-			throw new CustomerResourceException(ex.getErrorMessage(), CustomerResourceErrorCodes.BAD_REQUEST);
+			throw new CustomerResourceException(ex.getErrorMessage(), ex.getErrorCode());
 		}
 	}
 
@@ -59,7 +60,7 @@ public class CustomerManagementResource {
 			return Response.ok(customerDto).build();
 		} catch (CustomerApplicationException ex) {
 			logger.error(ex);
-			throw new CustomerResourceException(ex.getErrorMessage(), CustomerResourceErrorCodes.BAD_REQUEST);
+			throw new CustomerResourceException(ex.getErrorMessage(), ex.getErrorCode());
 		}
 	}
 
@@ -74,7 +75,7 @@ public class CustomerManagementResource {
 			return Response.ok("Customer with id [ " + custId + " ] updated successfully").build();
 		} catch (CustomerApplicationException ex) {
 			logger.error(ex);
-			throw new CustomerResourceException(ex.getErrorMessage(),	CustomerResourceErrorCodes.BAD_REQUEST);
+			throw new CustomerResourceException(ex.getErrorMessage(),ex.getErrorCode());
 		}
 	}
 
@@ -88,7 +89,7 @@ public class CustomerManagementResource {
 			return Response.ok("Customer with id [ " + custId + " ] deleted successfully").build();
 		} catch (CustomerApplicationException ex) {
 			logger.error(ex);
-			throw new CustomerResourceException(ex.getErrorMessage(), CustomerResourceErrorCodes.BAD_REQUEST);
+			throw new CustomerResourceException(ex.getErrorMessage(), ex.getErrorCode());
 		}
 	}
 }
