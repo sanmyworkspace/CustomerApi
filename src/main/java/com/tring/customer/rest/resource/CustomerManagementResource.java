@@ -1,6 +1,5 @@
 package com.tring.customer.rest.resource;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -20,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tring.customer.dto.CustomerDto;
 import com.tring.customer.exception.CustomerApplicationException;
-import com.tring.customer.rest.exception.CustomerResourceErrorCodes;
 import com.tring.customer.rest.exception.CustomerResourceException;
 import com.tring.customer.service.CustomerService;
 

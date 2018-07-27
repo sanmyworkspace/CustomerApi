@@ -1,4 +1,4 @@
-package com.tring.customer.config;
+package com.tring.customer.db.config;
 
 import java.util.Properties;
 
@@ -36,7 +36,7 @@ public class HibernateConfiguration {
 		return sessionFactoryBean;
 	}
 
-	private DataSource getDataSource() {
+	protected DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(environment.getProperty("db.driverClassName"));
 		dataSource.setUrl(environment.getProperty("db.url"));

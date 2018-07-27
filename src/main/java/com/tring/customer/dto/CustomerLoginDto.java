@@ -71,41 +71,6 @@ public class CustomerLoginDto {
 		this.customer = customer;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
-		result = prime * result + ((passwordHash == null) ? 0 : passwordHash.hashCode());
-		result = prime * result + ((passwordSalt == null) ? 0 : passwordSalt.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CustomerLoginDto other = (CustomerLoginDto) obj;
-		if (customerId == null) {
-			if (other.customerId != null)
-				return false;
-		} else if (!customerId.equals(other.customerId))
-			return false;
-		if (passwordHash == null) {
-			if (other.passwordHash != null)
-				return false;
-		} else if (!passwordHash.equals(other.passwordHash))
-			return false;
-		if (passwordSalt == null) {
-			if (other.passwordSalt != null)
-				return false;
-		} else if (!passwordSalt.equals(other.passwordSalt))
-			return false;
-		return true;
-	}
+	
 
 }

@@ -101,4 +101,6 @@ public class PersonalDetailsDto {
 		this.pincode = pincode;
 	}
 
+	
+	
 }

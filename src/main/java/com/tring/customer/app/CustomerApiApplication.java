@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -13,9 +12,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration
 @SpringBootApplication
 @EnableTransactionManagement
-@ComponentScan("com.tring.customer")
+@ComponentScan(basePackages={"com.tring.customer"})
 @PropertySource(value = { "classpath:/log4j.properties"})
-public class CustomerApiApplication extends SpringBootServletInitializer {
+public class CustomerApiApplication  {
 	
 	static Logger logger = LogManager.getLogger(CustomerApiApplication.class);
 	

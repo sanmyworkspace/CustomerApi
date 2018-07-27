@@ -12,12 +12,15 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.internal.verification.VerificationModeFactory;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.verification.VerificationMode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.tring.customer.app.CustomerApiApplication;
 import com.tring.customer.dao.CustomerDao;
 import com.tring.customer.dto.CustomerDto;
 import com.tring.customer.dto.PersonalDetailsDto;
@@ -28,7 +31,7 @@ import com.tring.customer.service.CustomerService;
 
 //@RunWith(MockitoJUnitRunner.class)
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes={CustomerApiApplication.class})
 public class CustomerServiceImplTest {
 
 	private static final int customerId = 1;
@@ -47,10 +50,13 @@ public class CustomerServiceImplTest {
 
 	private PersonalDetailsDto pdto;
 
+	private Customer customerWithData;
+
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		customer = new Customer();
+		customerWithData=new Customer(101,"firstName","lastName","29","male","uname",new PersonalDetails());
 		pd = new PersonalDetails();
 		customer.setPersonalDetails(pd);
 		customerDto = new CustomerDto();
@@ -58,14 +64,23 @@ public class CustomerServiceImplTest {
 		customerDto.setPersonalDetails(pdto);
 	}
 
-	@Test
+	/*@Test
 	public void getAllCustomers_NotNull() {
 		when(customerDao.getAllCustomers()).thenReturn(Arrays.asList(customer));
 		List<CustomerDto> customerDtos = customerServiceImpl.getAllCustomers();
 		assertNotNull(customerDtos);
 		verify(customerDao, times(1)).getAllCustomers();
-	}
+	}*/
 
+	@Test
+	public void getAllCustomers_NotNullAndIsNotEmpty() {
+		when(customerDao.getAllCustomers()).thenReturn(Arrays.asList(customerWithData));
+		List<CustomerDto> customerDtos = customerServiceImpl.getAllCustomers();
+		assertNotNull(customerDtos);
+		assertTrue(!customerDtos.isEmpty());
+		verify(customerDao, times(1)).getAllCustomers();
+	}
+	
 	@Test(expected = CustomerApplicationException.class)
 	public void getAllCustomers_ThrowsExceptionWhenNoUserFound() {
 		when(customerDao.getAllCustomers()).thenReturn(null);
