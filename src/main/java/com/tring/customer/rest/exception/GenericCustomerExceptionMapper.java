@@ -20,9 +20,8 @@ public class GenericCustomerExceptionMapper implements ExceptionMapper<Throwable
 		return Response
                 .status(Status.INTERNAL_SERVER_ERROR)
                 .type(MediaType.APPLICATION_JSON)
-                .entity(exception.getLocalizedMessage())
+                .entity("Sorry system failed due to unexpected error. Please try after sometime.")
                 .build();
-		
 	}
 
 }
