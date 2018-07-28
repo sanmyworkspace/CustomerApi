@@ -31,6 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	CustomerMapper customerMapper;
 
+	
 	@Override
 	public List<CustomerDto> getAllCustomers() {
 		logger.debug("getAllCustomers");
@@ -50,7 +51,10 @@ public class CustomerServiceImpl implements CustomerService {
 	public CustomerDto getCustomerById(int customerId) {
 		logger.debug("getCustomerById");
 		Customer customer = customerDao.getCustomerById(customerId);
-		CustomerDto customerDto = customerMapper.mapCustomerToCustomerDto(customer);
+		CustomerDto customerDto=null;
+		if(customer!=null){
+			customerDto = customerMapper.mapCustomerToCustomerDto(customer);
+		}
 		return customerDto;
 	}
 

@@ -27,7 +27,6 @@ import com.tring.customer.model.Customer;
 import com.tring.customer.model.PersonalDetails;
 import com.tring.customer.service.CustomerService;
 
-//@RunWith(MockitoJUnitRunner.class)
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { CustomerApiApplication.class })
 public class CustomerServiceImplTest {

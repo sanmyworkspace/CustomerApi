@@ -63,7 +63,7 @@ public class CustomerManagementResource {
 			customerDto = customerService.getCustomerById(customerId);
 		} catch (Exception ex) {
 			logger.error(ex);
-			throw new CustomerResourceException("Failed in getting customer with id: ", CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
+			throw new CustomerResourceException("Failed in getting customer with id: ["+customerId+"]", CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
 		}
 		if (customerDto != null ) {
 			return Response.ok(customerDto).build();

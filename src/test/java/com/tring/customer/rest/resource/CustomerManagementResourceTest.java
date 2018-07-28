@@ -29,26 +29,16 @@ import com.tring.customer.dto.PersonalDetailsDto;
 import com.tring.customer.rest.exception.CustomerResourceException;
 import com.tring.customer.service.CustomerService;
 
-/*@RunWith(SpringRunner.class)
-@SpringBootTest*/
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={CustomerApiApplication.class})
 public class CustomerManagementResourceTest {
 
 	private static final int customerId = 0;
 
-	/*@Rule
-	public ExpectedException thrown = ExpectedException.none();*/
 
 	@MockBean
 	CustomerService customerServiceImpl;
 
-/*	@MockBean
-	CustomerService customerServiceImplMock;*/
-	
-/*	@MockBean
-	CustomerDao customerDaoImpl;*/
-	
 	// use inject mocks with spring boot versions lower than 1.4
 	@SpyBean
 	private CustomerManagementResource customerManagementResource;
@@ -88,7 +78,7 @@ public class CustomerManagementResourceTest {
 	
 	@Test(expected=CustomerResourceException.class)
 	public void getCustomers_ThrowExceptionWhenNoCustomersFoundWithErrorCode_204(){
-		when(customerServiceImpl.getAllCustomers()).thenThrow(new CustomerResourceException("not customers found", 204));
+		when(customerServiceImpl.getAllCustomers()).thenThrow(new CustomerResourceException("not customers found", 404));
 		Response response=customerManagementResource.getAllCustomers();
 		assertEquals(204, response.getStatus());
 		verify(customerServiceImpl,times(1)).getAllCustomers();
