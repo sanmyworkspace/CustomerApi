@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import com.tring.customer.rest.exception.CustomerResourceExceptionMapper;
 import com.tring.customer.rest.exception.GenericCustomerExceptionMapper;
 import com.tring.customer.rest.resource.CustomerManagementResource;
-import com.tring.customer.swagger.config.CustomerApiSwaggerConfig;
 
 /**
  * @author akula
