@@ -18,8 +18,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tring.customer.dto.CustomerDto;
-import com.tring.customer.exception.CustomerApplicationException;
 import com.tring.customer.rest.exception.CustomerResourceErrorCodes;
+import com.tring.customer.rest.exception.CustomerResourceException;
 import com.tring.customer.service.CustomerService;
 
 /**
@@ -42,14 +42,14 @@ public class CustomerManagementResource {
 			customerDtosList = customerService.getAllCustomers();
 		} catch (Exception ex) {
 			logger.error(ex);
-			throw new CustomerApplicationException("Failed while getting list of customers..." + ex.getMessage(), CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
+			throw new CustomerResourceException("Failed while getting list of customers...", CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
 		}
 		if (customerDtosList != null && !customerDtosList.isEmpty()) {
 			GenericEntity<List<CustomerDto>> genericEntityList = new GenericEntity<List<CustomerDto>>(customerDtosList){
 			};
 			return Response.ok(genericEntityList).build();
 		} else {
-			throw new CustomerApplicationException("No customers found", CustomerResourceErrorCodes.NO_CONTENT);
+			throw new CustomerResourceException("No customers found", CustomerResourceErrorCodes.NOT_FOUND);
 		}
 	}
 
@@ -63,12 +63,12 @@ public class CustomerManagementResource {
 			customerDto = customerService.getCustomerById(customerId);
 		} catch (Exception ex) {
 			logger.error(ex);
-			throw new CustomerApplicationException("Failed in getting customer with id: " + customerId, CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
+			throw new CustomerResourceException("Failed in getting customer with id: ", CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
 		}
-		if (customerDto != null) {
+		if (customerDto != null ) {
 			return Response.ok(customerDto).build();
 		} else {
-			throw new CustomerApplicationException("There is no customer exists with customer id: " + customerId, CustomerResourceErrorCodes.NO_CONTENT);
+			throw new CustomerResourceException("There is no customer exists with customer id: " + customerId, CustomerResourceErrorCodes.NOT_FOUND);
 		}
 	}
 
@@ -84,11 +84,11 @@ public class CustomerManagementResource {
 				customerService.updateCustomerById(customerDto);
 				return Response.ok("Customer with id [ " + customerId + " ] updated successfully").build();
 			}else{
-				return Response.ok("There is no Customer with id [ " + customerId + " ] existed").build();
+				throw new CustomerResourceException("No customer found with id:[" + customerId+"] to update" , CustomerResourceErrorCodes.NOT_FOUND);
 			}
 		} catch (Exception ex) {
 			logger.error(ex);
-			throw new CustomerApplicationException("Failed in updating customer with id: " + customerDto.getCustomerId(), CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
+			throw new CustomerResourceException("Failed in updating customer with id: " + customerId, CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -102,13 +102,13 @@ public class CustomerManagementResource {
 			customerDto = customerService.getCustomerById(customerId);
 		} catch (Exception ex) {
 			logger.error(ex);
-			throw new CustomerApplicationException("Failed in deleting customer with id: " + customerId, CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
+			throw new CustomerResourceException("Failed in deleting customer with id: " + customerId, CustomerResourceErrorCodes.INTERNAL_SERVER_ERROR);
 		}
 		if (customerDto != null) {
 			customerService.deleteCustomerById(customerId);
 			return Response.ok("Customer with id [ " + customerId + " ] deleted successfully").build();
 		} else {
-			throw new CustomerApplicationException("There is no customer exists with customer id: " + customerId, CustomerResourceErrorCodes.NO_CONTENT);
+			throw new CustomerResourceException("There is no customer exists with customer id: [" + customerId+"]", CustomerResourceErrorCodes.NOT_FOUND);
 		}
 	}
 }
